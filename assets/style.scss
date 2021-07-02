@@ -173,3 +173,10 @@ ul li > p {
 .accordion-content {
   transition: max-height 0.2s;
 }
+
+.reading-progress-bar {
+  position: sticky;
+  height: 5px;
+  top: 0;
+  background-color: #ff0000;
+}
