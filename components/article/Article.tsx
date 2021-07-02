@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { IPost } from '../../types/cms';
 import { ArticleContained } from '../ArticleContained';
 import { Contained } from '../Contained';
@@ -9,6 +9,7 @@ import { ArticleSectionFeatureImage } from './sections/ArticleSectionFeatureImag
 import { ArticleSectionTitle } from './sections/ArticleSectionTitle';
 import { ArticleSubtitleSection } from './sections/ArticleSubtitleSection';
 import { ArticleWidgetAuthor } from './widgets/ArticleWidgetAuthor';
+import { ReadingBar } from '../ReadingBar';
 
 export function Article(props: IPost) {
   const {
@@ -21,11 +22,14 @@ export function Article(props: IPost) {
     description,
   } = props;
 
-  // const { isMobile } = useContext(ScreenContext);
-
+  const readingBarRef = useRef(null);
   return (
     <article>
-      <div className="flex flex-col items-center mt-10 mb-16 space-y-4">
+      <ReadingBar target={readingBarRef} />
+      <div
+        ref={readingBarRef}
+        className="flex flex-col items-center mt-10 mb-16 space-y-4"
+      >
         <Contained>
           <ArticleSectionFeatureImage
             featureImage={featureImage}
